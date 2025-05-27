@@ -1,17 +1,13 @@
 from flask import Flask
+from flask_mail import Mail
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-secret-key'
 
-import sqlite3
+mail = Mail(app)
 
-conn = sqlite3.connect('pyBook.db')
+from appmain.routes import main
+from appmain.user.routes import user
 
-cursor = conn.cursor()
-
-SQL = 'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, ' \
-      'username TEXT NOT NULL, email TEXT NOT NULL, passwd TEXT NOT NULL, authkey TEXT)'
-
-cursor.execute(SQL)
-
-cursor.close()
-conn.close()
+app.register_blueprint(main)
+app.register_blueprint(user)

@@ -6,12 +6,9 @@ import jwt
 
 from flask_mail import Message
 
-from appmain import app, mail
+from appmain import app, mail  # 이건 ok
 
 from appmain.utils import verifyJWT, getJWTContent
-
-from appmain.routes import main
-app.register_blueprint(main)
 
 user = Blueprint('user', __name__)
 
