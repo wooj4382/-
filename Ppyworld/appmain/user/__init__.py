@@ -1,3 +1,7 @@
+from flask import Flask
+
+app = Flask(__name__)
+
 import sqlite3
 
 conn = sqlite3.connect('pyBook.db')
