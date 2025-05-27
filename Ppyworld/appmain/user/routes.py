@@ -10,6 +10,9 @@ from appmain import app, mail
 
 from appmain.utils import verifyJWT, getJWTContent
 
+from appmain.routes import main
+app.register_blueprint(main)
+
 user = Blueprint('user', __name__)
 
 @user.route('/myinfo')
